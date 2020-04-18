@@ -2,7 +2,7 @@ package pl.fulful.com.petclinic.model;
 
 import java.time.LocalDate;
 
-public class Pet {
+public class Pet extends BaseEntity {
     private PetType petType;
     private PetTypeEnum petTypeEnum;
     private Owner owner;
