@@ -1,9 +1,9 @@
 package pl.fulful.com.petclinic.services.map;
 
 import pl.fulful.com.petclinic.model.Pet;
-import pl.fulful.com.petclinic.services.CrudService;
+import pl.fulful.com.petclinic.services.PetService;
 
-public class PetServiceMapImpl extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
     public Pet save(Pet pet) {
