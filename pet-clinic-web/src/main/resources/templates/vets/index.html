@@ -5,11 +5,20 @@
     <title>Pet Clinic - Vet Index</title>
 </head>
 <body>
-    <h1>List of all VETS:</h1>
-    <ul>
-        <li th:text="elo"></li>
-    </ul>
+<h1>List of all VETS:</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </tr>
 
+    <tr th:each="vet : ${vets_param}">
+        <td th:text="${vet.id}">replace it</td>
+        <td th:text="${vet.firstName}">replace it</td>
+        <td th:text="${vet.lastName}">replace it</td>
+    </tr>
+</table>
 
 </body>
 </html>
