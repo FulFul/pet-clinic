@@ -1,24 +1,50 @@
 package pl.fulful.com.petclinic.services.map;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import pl.fulful.com.petclinic.model.BaseEntity;
 
-public class AbstractMapService<T, ID> {
+import java.util.*;
 
-    protected Map<ID, T> map = new HashMap<>();
+public class AbstractMapService<T extends BaseEntity, ID extends Long> {
+
+    protected Map<Long, T> map = new HashMap<>();
 
     public Set<T> findAll() {
         return new HashSet(map.values());
     }
 
-    public T findById(ID id) {
+    public T findById(Long id) {
         return map.get(id);
     }
 
     public T save(ID id, T object) {
         return map.put(id, object);
+    }
+
+    public T save(T object) {
+        if (object != null) {
+            if (object.getId() == null) {
+                object.setId(getNextId());
+            } else {
+                throw new RuntimeException("Object cannot be null");
+            }
+
+            return map.put(getNextId(), object);
+        }
+
+        return object;
+    }
+
+    private Long getNextId() {
+//        if (map.isEmpty()) {
+//            return 1L;
+//        } else {
+//            return Collections.max(map.keySet()) + 1;
+//        }
+        try {
+            return Collections.max(map.keySet()) + 1;
+        } catch (NoSuchElementException e) {
+            return 1L;
+        }
     }
 
     public void delete(T object) {
