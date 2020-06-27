@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 <head>
     <meta charset="UTF-8">
     <title>Pet Clinic - Owner Index</title>
 </head>
 <body>
 <h1>List of all OWNERS:</h1>
-<table>
+<table class="table table-stripped">
+    <thread>
     <tr>
-        <th>Id</th>
-        <th>First Name</th>
-        <th>Last Name</th>
+        <th style="width: 150px;">Id</th>
+        <th style="width: 150px;">First Name</th>
+        <th style="width: 150px;">Last Name</th>
     </tr>
+    </thread>
 
+    <tbody>
     <tr th:each="owner : ${owners_param}">
         <td th:text="${owner.id}">replace it</td>
         <td th:text="${owner.firstName}">replace it</td>
         <td th:text="${owner.lastName}">replace it</td>
     </tr>
+    </tbody>
 </table>
 
 </body>
