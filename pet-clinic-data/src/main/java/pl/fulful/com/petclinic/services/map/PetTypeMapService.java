@@ -1,8 +1,9 @@
 package pl.fulful.com.petclinic.services.map;
 
-import pl.fulful.com.petclinic.model.Vet;
-import pl.fulful.com.petclinic.services.VetService;
+import org.springframework.stereotype.Service;
+import pl.fulful.com.petclinic.model.PetType;
+import pl.fulful.com.petclinic.services.PetTypeService;
 
-public class PetTypeMapService extends AbstractMapService<Vet, Long> implements VetService {
-
+@Service
+public class PetTypeMapService extends AbstractMapService<PetType, Long> implements PetTypeService {
 }

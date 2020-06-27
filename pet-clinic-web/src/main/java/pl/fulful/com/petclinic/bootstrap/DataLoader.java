@@ -4,24 +4,45 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.fulful.com.petclinic.model.Owner;
+import pl.fulful.com.petclinic.model.PetType;
 import pl.fulful.com.petclinic.model.Vet;
 import pl.fulful.com.petclinic.services.OwnerService;
+import pl.fulful.com.petclinic.services.PetTypeService;
 import pl.fulful.com.petclinic.services.VetService;
+
+/* ta klasa jest chyba tylko do testów - w sensie aby programując
+   i dokładając kolejne cegiełki z modelu można było je na bierząco
+   testować właśnie dodając je w tej klasie.
+
+   CommandLineRunner - uruchamia metodę run() zaraz po kompilacji.
+ */
 
 @Component
 public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        PetType savedDogType = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        dog.setName("Cat");
+        PetType savedCatType = petTypeService.save(cat);
+
+
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
