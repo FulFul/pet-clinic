@@ -1,9 +1,11 @@
 package pl.fulful.com.petclinic.services.map;
 
+import org.springframework.stereotype.Service;
 import pl.fulful.com.petclinic.model.BaseEntity;
 
 import java.util.*;
 
+@Service
 public class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
     protected Map<Long, T> map = new HashMap<>();
