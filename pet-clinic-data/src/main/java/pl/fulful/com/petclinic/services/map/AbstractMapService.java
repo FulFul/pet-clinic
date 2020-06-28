@@ -33,8 +33,6 @@ public class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
             map.put(getNextId(), object);
         }
-//        System.out.println("object = " + object);
-//        System.out.println("object.getId() = " + object.getId());
 
         return object;
     }
