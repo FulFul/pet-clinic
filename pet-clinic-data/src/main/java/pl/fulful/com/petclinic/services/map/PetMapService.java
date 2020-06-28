@@ -5,10 +5,5 @@ import pl.fulful.com.petclinic.model.Pet;
 import pl.fulful.com.petclinic.services.PetService;
 
 @Service
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
-
-    @Override
-    public Pet save(Pet pet) {
-        return super.save(pet);
-    }
+public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
 }

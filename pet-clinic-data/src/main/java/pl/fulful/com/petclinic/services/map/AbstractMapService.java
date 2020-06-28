@@ -1,5 +1,6 @@
 package pl.fulful.com.petclinic.services.map;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.stereotype.Service;
 import pl.fulful.com.petclinic.model.BaseEntity;
 
@@ -30,13 +31,15 @@ public class AbstractMapService<T extends BaseEntity, ID extends Long> {
                 throw new RuntimeException("Object cannot be null");
             }
 
-            return map.put(getNextId(), object);
+            map.put(getNextId(), object);
         }
+//        System.out.println("object = " + object);
+//        System.out.println("object.getId() = " + object.getId());
 
         return object;
     }
 
-    private Long getNextId() {
+    protected Long getNextId() {
 //        if (map.isEmpty()) {
 //            return 1L;
 //        } else {
