@@ -1,7 +1,38 @@
 package pl.fulful.com.petclinic.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "enum_types")
 public enum PetTypeEnum {
-    CAT,
-    DOG,
-    RAT
+
+    CAT("CAT"),
+    DOG("DOG"),
+    RAT("RAT");
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String value;
+
+    PetTypeEnum(String value) {
+        this.value = value;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 }
