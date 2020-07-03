@@ -25,8 +25,10 @@ public class AbstractMapService<T extends BaseEntity, ID extends Long> {
     public T save(T object) {
         if (object != null) {
             if (object.getId() == null) {
+                System.out.println("ustawiam Id w AbstractMapService");
                 object.setId(getNextId());
             } else {
+                System.out.println("NIE ustawiam Id w AbstractMapService");
                 throw new RuntimeException("Object cannot be null");
             }
 

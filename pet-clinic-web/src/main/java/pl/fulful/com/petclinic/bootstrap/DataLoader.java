@@ -1,5 +1,6 @@
 package pl.fulful.com.petclinic.bootstrap;
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -23,14 +24,17 @@ public class DataLoader implements CommandLineRunner {
     private final PetTypeService petTypeService;
     private final PetService petService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, PetService petService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      PetService petService, SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.petService = petService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -87,6 +91,13 @@ public class DataLoader implements CommandLineRunner {
         savedPetCat.setOwner(owner2);
         owner2.getPets().add(savedPetCat);
         ownerService.save(owner2);                                          // w tym miejscu nadawane jest ID dla owner2
+
+        Visit visit = new Visit();
+        visit.setDate(LocalDate.now());
+        visit.setDescription("wizyta hello");
+        visit.setPet(petCat);
+        System.out.println("PRZED         visitService.save(visit);");
+        visitService.save(visit);
 
         System.out.println("----------");
         Owner[] owners = new Owner[100];
