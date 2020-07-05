@@ -1,6 +1,7 @@
 package pl.fulful.com.petclinic.services.map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import pl.fulful.com.petclinic.model.Owner;
 import pl.fulful.com.petclinic.services.OwnerService;
@@ -8,6 +9,7 @@ import pl.fulful.com.petclinic.services.PetService;
 import pl.fulful.com.petclinic.services.PetTypeService;
 
 @Service
+@Profile({"default", "map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private PetTypeService petTypeService;

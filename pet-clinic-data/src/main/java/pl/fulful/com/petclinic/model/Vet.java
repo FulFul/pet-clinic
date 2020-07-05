@@ -7,7 +7,7 @@ import java.util.Set;
 @Entity
 public class Vet extends Person {
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch =  FetchType.EAGER)
     @JoinTable(
         name = "vet_speciality",
         joinColumns = @JoinColumn(name = "vet_id"),

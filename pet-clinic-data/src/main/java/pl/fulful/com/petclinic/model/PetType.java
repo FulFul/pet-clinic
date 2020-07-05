@@ -1,9 +1,6 @@
 package pl.fulful.com.petclinic.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +10,7 @@ public class PetType extends BaseEntity {
 
     @Column(name = "name")
     private String name;
-    @OneToMany(mappedBy = "petType")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "petType")
     private Set<Pet> pets = new HashSet<>();
 
     public String getName() {
