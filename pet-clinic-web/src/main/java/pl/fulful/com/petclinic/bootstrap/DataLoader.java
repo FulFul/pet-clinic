@@ -91,6 +91,21 @@ public class DataLoader implements CommandLineRunner {
         owner2.getPets().add(petCat);
         ownerService.save(owner2);                                          // w tym miejscu nadawane jest ID dla owner2
 
+        Owner owner3 = Owner.builder()
+                .firstName("elo")
+                .lastName("okoko")
+                .address("kkkkk")
+                .city("llll")
+                .telephone("908098")
+                .build();
+
+        ownerService.save(owner3);
+        System.out.println("owner3 = " + owner3);
+        System.out.println("owner3.getId() = " + owner3.getId());
+        System.out.println("owner3.getFName() = " + owner3.getFirstName());
+        System.out.println("owner3.getLastName() = " + owner3.getLastName());
+
+
         Visit visit = new Visit();
         visit.setDate(LocalDate.now());
         visit.setDescription("wizyta hello");

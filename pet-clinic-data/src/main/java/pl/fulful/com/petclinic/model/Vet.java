@@ -1,9 +1,18 @@
 package pl.fulful.com.petclinic.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Vet extends Person {
 
@@ -14,14 +23,6 @@ public class Vet extends Person {
         inverseJoinColumns = @JoinColumn(name = "speciality_id")
     )
     private Set<Speciality> specialities = new HashSet<>();
-
-    public Set<Speciality> getSpecialities() {
-        return specialities;
-    }
-
-    public void setSpecialities(Set<Speciality> specialities) {
-        this.specialities = specialities;
-    }
 
     public void addSpeciality(Speciality speciality) {
         // TODO: nie jestem pewien czy to poniżej jest konieczne
