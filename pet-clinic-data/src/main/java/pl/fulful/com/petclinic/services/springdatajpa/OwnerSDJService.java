@@ -8,10 +8,8 @@ import pl.fulful.com.petclinic.dao.PetRepository;
 import pl.fulful.com.petclinic.dao.PetTypeRepository;
 import pl.fulful.com.petclinic.model.Owner;
 import pl.fulful.com.petclinic.services.OwnerService;
-import pl.fulful.com.petclinic.services.PetService;
-import pl.fulful.com.petclinic.services.PetTypeService;
 
-import java.util.*;
+import java.util.Set;
 
 @Service
 @Profile("springdatajpa")
@@ -48,33 +46,6 @@ public class OwnerSDJService implements OwnerService {
 
     @Override
     public Owner save(Owner owner) {
-        System.out.println("####################################################### OwnerSDJService.save()");
-
-//        if (owner != null) {
-//            owner.getPets().forEach(pet -> {
-//                if (pet.getPetType() != null) {
-//                    if (pet.getPetType().getId() == null) {
-//                        petTypeService.save(pet.getPetType());
-//                    }
-//                } else {
-//                    throw new RuntimeException("PetType cannot be null. Set proper PetType in your pet, please.");
-//                }
-//
-//                if (pet.getId() == null) {
-//                    petService.save(pet);
-//                }
-//            });
-//
-////            return super.save(owner);
-            System.out.println("owner.getId() = " + owner.getId());
-            System.out.println("owner.getFirstName() = " + owner.getFirstName());
-            System.out.println("owner.getPets() = " + owner.getPets());
-//            owner.setId(101L);
-//            return ownerRepository.save(owner);
-//        }
-//
-//        return null;
-//
         return ownerRepository.save(owner);
     }
 
